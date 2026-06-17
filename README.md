@@ -74,3 +74,8 @@ int main() {
   }
 }
 ```
+
+### sleep mode
+https://deepbluembedded.com/esp32-sleep-modes-power-consumption/
+
+
