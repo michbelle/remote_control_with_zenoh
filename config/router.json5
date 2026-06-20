@@ -1,0 +1,15 @@
+{
+  /// The node's mode (router, peer or client)
+  "mode": "router",
+  "listen": {
+    "endpoints": ["tls/localhost:7447"]
+  },
+  "transport": {
+    "link": {
+      "tls": {
+        "listen_private_key": "/home/michele/code/remote_control_with_zenoh/cert/localhost/key.pem",
+        "listen_certificate": "/home/michele/code/remote_control_with_zenoh/cert/localhost/cert.pem"
+      }
+    }
+  }
+}

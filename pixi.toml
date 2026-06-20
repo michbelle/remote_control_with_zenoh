@@ -10,8 +10,13 @@ PATH = "$PATH:{root}/.pixi/envs/default/bin/go"
 
 [tasks]
 build_minica = "cd minica && go build"
-gen_cert = "cd cert && ./../minica/minica --domains 127.0.0.1"
+gen_cert = "cd cert && ./../minica/minica --domains localhost"
 build = "cmake -B build -S . && cmake --build build"
+
+router = "zenohd -c ./config/router.json5"
+
+sub = "./build/z_sub"
+pub = "./build/z_pub"
 
 [dependencies]
 zenoh-pico = ">=1.8.0,<2"

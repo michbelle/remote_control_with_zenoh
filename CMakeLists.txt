@@ -43,26 +43,35 @@ endif()
 # -----------------------------------------------------------------------------
 # Define the executable and its source file
 add_executable(z_sub src/z_sub.c)
+add_executable(z_sub_tsl src/z_sub_tsl.c)
 add_executable(z_pub src/z_pub.c)
 
 # Include directories
 target_include_directories(z_sub PRIVATE ${ZENOHPICO_INCLUDE_DIR})
+target_include_directories(z_sub_tsl PRIVATE ${ZENOHPICO_INCLUDE_DIR})
 target_include_directories(z_pub PRIVATE ${ZENOHPICO_INCLUDE_DIR})
 
 # Link libraries
 target_link_libraries(z_sub PRIVATE ${ZENOHPICO_LIBRARY})
+target_link_libraries(z_sub_tsl PRIVATE ${ZENOHPICO_LIBRARY})
 target_link_libraries(z_pub PRIVATE ${ZENOHPICO_LIBRARY})
 
 # Unix-specific compiler flags and system libraries
 if(UNIX)
     target_compile_options(z_sub PRIVATE -Wall -Wextra -O2)
+    target_compile_options(z_sub_tsl PRIVATE -Wall -Wextra -O2)
     target_compile_options(z_pub PRIVATE -Wall -Wextra -O2)
     
     # If on Linux, Zenoh might require pthread and math libraries
     if(CMAKE_SYSTEM_NAME MATCHES "Linux")
         target_compile_definitions(z_sub PRIVATE ZENOH_LINUX)
+        target_compile_definitions(z_sub_tsl PRIVATE ZENOH_LINUX)
         target_compile_definitions(z_pub PRIVATE ZENOH_LINUX)
+        target_compile_definitions(z_sub PRIVATE Z_FEATURE_LINK_TLS)
+        target_compile_definitions(z_sub_tsl PRIVATE Z_FEATURE_LINK_TLS)
+        target_compile_definitions(z_pub PRIVATE Z_FEATURE_LINK_TLS)
         target_link_libraries(z_sub PRIVATE pthread m)
+        target_link_libraries(z_sub_tsl PRIVATE pthread m)
         target_link_libraries(z_pub PRIVATE pthread m)
     endif()
 endif()

@@ -2,12 +2,12 @@
   /// The node's mode (router, peer or client)
   "mode": "client",
   "connect": {
-    "endpoints": ["tls/127.0.0.1:7447"]
+    "endpoints": ["tls/localhost:7447"]
   },
   "transport": {
     "link": {
       "tls": {
-        "root_ca_certificate": "/home/user/tls/minica.pem"
+        "root_ca_certificate": "/home/michele/code/remote_control_with_zenoh/cert/minica.pem"
       }
     }
   }
