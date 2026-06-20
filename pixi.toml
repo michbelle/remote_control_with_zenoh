@@ -10,6 +10,7 @@ PATH = "$PATH:{root}/.pixi/envs/default/bin/go"
 
 [tasks]
 build_minica = "cd minica && go build"
+gen_cert = "cd cert && ./../minica/minica --domains 127.0.0.1"
 build = "cmake -B build -S . && cmake --build build"
 
 [dependencies]
